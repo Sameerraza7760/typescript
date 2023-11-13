@@ -489,3 +489,253 @@ type Id=number|string
 
 //slice is used to from to to
 // matlab kha se kha tkk
+
+
+
+
+
+
+// const logString=(arg:string)=>{
+//     console.log(arg);
+//     return arg
+// }
+
+// console.log(logString('ahsan'));
+
+
+
+
+// const logNumber=(arg:number)=>{
+// console.log(arg);
+// return arg
+
+// }
+
+// console.log(logNumber(1));
+
+
+
+
+
+// const logArray=(arg:any[])=>{
+// console.log(arg);
+
+// return arg
+
+// }
+
+// console.log(logArray([1,2,34]));
+
+//its not okey 
+
+// thats why we used genrics
+
+
+
+// const anyThing=<T>(arg:T):T=>{
+// console.log(arg);
+// return arg
+
+// }
+// console.log(anyThing(['sameer',true,3,4,5,6]))
+
+
+
+
+///////////
+
+
+
+
+//GENRICS
+// interface Hasage{
+//     age:number
+// }
+
+// const getOldest=<T extends Hasage>(people:T[])=>{
+// return people.sort((a,b)=>b.age-a.age)[0]
+// }
+
+// const people:Hasage[]=[{age:20},{age:200},{age:90}]
+
+
+
+
+// interface Player{
+//     name:string;
+//     age:number
+// }
+// const player:Player[]=[{age:90,name:'joe'},{age:30,name:'ahsan'},{age:40,name:'sameer'}]
+// console.log(getOldest(people).age)
+
+
+
+////////////////////////////
+
+// another Example
+
+// interface PromseObject{
+//     name:string;
+//     age:number;
+//     title:string
+// }
+
+
+
+// const fetchPostData=async(url:string):Promise<PromseObject[]>=>{
+
+//     const respose= await fetch(`example of post url ${url}`)
+//     const data= await respose.json()
+//     return data
+// }
+
+
+// (async()=>{
+//  const result=  await fetchPostData('https//post.com')
+//  result[0].title
+// })
+
+
+
+// for user gets
+
+
+// const fetchUserData=async(url:string):Promise<User[]>=>{
+
+//     const respose= await fetch(`example of post url ${url}`)
+//     const data= await respose.json()
+//     return data
+// }
+
+
+// (async()=>{
+//  const users=  await fetchUserData ('https//post.com')
+//  users[0].name
+// })
+
+
+///////////////////////////
+
+
+// for everyFetchData we used a different functions so why we used only one by using genrics
+
+// interface PromseObject{
+//         name:string;
+//         age:number;
+//         title:string
+//     }
+
+// interface User{
+//     name:string;
+//     age:number;
+//     id:string
+// }
+
+
+
+// const fetchData= async<ResultType>(url:string):Promise<ResultType>=>{
+
+//     const response = await fetch(`https://${url}`);
+//     const data = await response.json();
+//     return data;
+  
+// }
+
+// (async () => {
+//     const users = await fetchData<User[]>('post.com');
+//     console.log(users[0].name);
+//   })();
+
+//   (async () => {
+//     const users = await fetchData<PromseObject[]>('post.com');
+//     console.log(users[0].title);
+//   })();
+
+/////////////////////////
+
+
+//another example 
+
+
+// interface UserCredientials{
+//     name:string;
+//     password:number;
+//     age:number
+// }
+
+
+// interface UserData{
+//     name:string;
+//     data:boolean
+//     age:number
+// }
+
+
+
+// const loggedin=<T>(user:T):boolean=>{
+//     console.log(user);
+//     return true
+    
+// }
+
+
+// const user:UserCredientials={
+//     name:'samemer',
+//     password:12,
+//     age:13
+
+// }
+
+// const userData:UserData={
+//     name:'ahesan',
+//     data:true,
+//     age:13
+
+// }
+
+// console.log(loggedin(user));
+
+
+// console.log(loggedin(userData));
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////
+
+
+
+
+//if only two properties are matched from interface so its called strutural and DUCK
+
+
+ interface IAuth{
+    name:string;
+    password:number;
+    isAdmin:boolean
+    login(name:string,password:number):void
+  
+ }
+
+ const auth:IAuth={
+    name:'sameer',
+    password:123123,
+    isAdmin:true,
+   login(name:'sameer',password:1212){}
+ }
+
+ const login=(user:IAuth):IAuth=>{
+    console.log(user);
+    return user
+ }
+
+
+ console.log(login(auth));
+ 
